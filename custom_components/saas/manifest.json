@@ -1,10 +1,10 @@
 {
   "domain": "saas",
-  "name": "sleepd - Sleep As Android Status",
+  "name": "sleepd - Sleep MQTT Processor",
   "codeowners": ["@sudoxnym"],
   "config_flow": true,
   "dependencies": ["mqtt", "mobile_app"],
-  "documentation": "https://www.github.com/sudoxnym/sleepd",
-  "issue_tracker": "https://www.github.com/sudoxnym/sleepd/issues",
+  "documentation": "https://github.com/sudoxnym/sleepd",
+  "issue_tracker": "https://github.com/sudoxnym/sleepd/issues",
   "version": "1.0.0"
 }
