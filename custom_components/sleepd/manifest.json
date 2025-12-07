@@ -6,5 +6,5 @@
   "dependencies": ["mqtt", "mobile_app"],
   "documentation": "https://www.github.com/sudoxnym/sleepd",
   "issue_tracker": "https://www.github.com/sudoxnym/sleepd/issues",
-  "version": "0.2.1"
+  "version": "1.0.0"
 }
