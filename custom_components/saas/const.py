@@ -1,6 +1,6 @@
 """Constants for the sleepd - Sleep As Android Stats integration."""
 
-DOMAIN = "sleepd"
+DOMAIN = "saas"
 
 INTEGRATION_NAME = "sleepd - Sleep As Android Stats"
 MODEL = "sleepd - Version 0.0.1"

@@ -1,5 +1,5 @@
 {
-  "domain": "sleepd",
+  "domain": "saas",
   "name": "sleepd - Sleep As Android Status",
   "codeowners": ["@sudoxnym"],
   "config_flow": true,
