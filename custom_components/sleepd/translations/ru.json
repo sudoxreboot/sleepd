@@ -1,10 +1,10 @@
 {
-  "title": "SAAS - Статус Sleep As Android",
+  "title": "sleepd - Статус Sleep As Android",
   "config": {
     "step": {
       "user": {
-        "title": "Конфигурация для SAAS - Статус Sleep As Android",
-        "description": "Настройка основных параметров для интеграции SAAS.",
+        "title": "Конфигурация для sleepd - Статус Sleep As Android",
+        "description": "Настройка основных параметров для интеграции sleepd.",
         "data": {
           "name": "Имя для датчика",
           "topic_template": "Тема MQTT для событий Sleep As Android",
@@ -20,8 +20,8 @@
   "options": {
     "step": {
       "init": {
-        "title": "Настройки интеграции SAAS",
-        "description": "Настройка основных параметров для интеграции SAAS.",
+        "title": "Настройки интеграции sleepd",
+        "description": "Настройка основных параметров для интеграции sleepd.",
         "data": {
           "name": "Имя для датчика",
           "topic_template": "Тема MQTT (от Sleep As Android)",

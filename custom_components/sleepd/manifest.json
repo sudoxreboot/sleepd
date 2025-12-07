@@ -1,0 +1,10 @@
+{
+  "domain": "sleepd",
+  "name": "sleepd - Sleep As Android Status",
+  "codeowners": ["@sudoxnym"],
+  "config_flow": true,
+  "dependencies": ["mqtt", "mobile_app"],
+  "documentation": "https://www.github.com/sudoxnym/sleepd",
+  "issue_tracker": "https://www.github.com/sudoxnym/sleepd/issues",
+  "version": "0.2.1"
+}

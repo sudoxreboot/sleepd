@@ -4,10 +4,10 @@
   </a>
 </p>
 
-<h1>🌙 saas - Sleep As Android status</h1>
+<h1>🌙 sleepd - Sleep As Android status</h1>
 
 <h2>🚨 0.2.0 breaking changes 🚨</h2>  
-due to changes in **Home Assistant** 2025.12, you **must** remove your existing **SAAS** integration entries and re-add them after updating to this version.
+due to changes in **Home Assistant** 2025.12, you **must** remove your existing **sleepd** integration entries and re-add them after updating to this version.
 
 ---
 
@@ -21,7 +21,7 @@ sleep as android status is my solution for wake/sleep state within HA. it listen
 <ul>
   <li>
     <details>
-      <summary><strong>📡 9 sensors</strong></summary>
+      <summary><strong>📡 8 sensors</strong></summary>
 
 | Sensor | Description |
 | ------ | ----------- |
@@ -57,7 +57,7 @@ sleep as android status is my solution for wake/sleep state within HA. it listen
     <details>
       <summary><strong>🛠️ 1 service</strong></summary>
       <pre>
-service: saas.saas_example_alarm_set
+service: sleepd.sleepd_example_alarm_set
 data:
   message: Example Message!
   day: monday
@@ -86,15 +86,15 @@ data:
 
 <h2>🧪 installation:</h2>
 <ul>
-  <li>add <code>https://www.github.com/sudoxnym/saas</code> to your custom repositories in HACS</li>
-  <li>search and download **SAAS - Sleep As Android status**</li>
+  <li>add <code>https://www.github.com/sudoxnym/sleepd</code> to your custom repositories in HACS</li>
+  <li>search and download **sleepd - Sleep As Android status**</li>
   <li>restart Home Assistant</li>
   <li>
-    <a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=saas">
+    <a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=sleepd">
       <img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="add to ha">
     </a>
   </li>
-  <li>add integration: **SAAS - Sleep As Android status**</li>
+  <li>add integration: **sleepd - Sleep As Android status**</li>
 </ul>
 
 <h2>⚙️ configuration:</h2>

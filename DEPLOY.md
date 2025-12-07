@@ -1,4 +1,4 @@
-# 🧪 Deploying SAAS - Sleep As Android Status via HACS
+# 🧪 Deploying sleepd - Sleep As Android Status via HACS
 
 ## 🛠️ Pre-requisites
 
@@ -11,12 +11,12 @@
 
 1. In HACS, go to "Integrations"
 2. Click the 3-dot menu > Custom repositories
-3. Paste: `https://github.com/sudoxnym/saas`
+3. Paste: `https://github.com/sudoxnym/sleepd`
 4. Set Category to "Integration"
 5. Click "Add"
-6. Refresh, search for `SAAS - Sleep As Android Status`, and install
+6. Refresh, search for `sleepd - Sleep As Android Status`, and install
 7. Restart Home Assistant
-8. Go to Settings > Devices & Services > Add Integration > search "SAAS"
+8. Go to Settings > Devices & Services > Add Integration > search "sleepd"
 9. Configure the integration with your MQTT topic and states
 
 ## 🧪 Testing

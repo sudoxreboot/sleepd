@@ -1,4 +1,4 @@
-# Contributing to SAAS - Sleep As Android Status
+# Contributing to sleepd - Sleep As Android Status
 
 Thanks for helping improve the project!
 
