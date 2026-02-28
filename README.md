@@ -1,7 +1,3 @@
-<div align="center">
-
-<img src="brands/icon.png" width="128" height="128" alt="sleepd icon">
-
 # sleepd
 
 **real-time sleep state tracking for home assistant**
@@ -9,7 +5,7 @@
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-00ffff?style=for-the-badge&logo=homeassistant)](https://hacs.xyz/docs/faq/custom_repositories)
 [![License](https://img.shields.io/badge/license-MIT-ff00ff?style=for-the-badge)](LICENSE)
 
-*processes sleep mqtt messages from android apps and exposes states, events, and controls to home assistant - automate your smart home based on whether you're awake or asleep.*
+*processes sleep mqtt messages and exposes states, events, and controls to home assistant - automate your smart home based on whether you're awake or asleep.*
 
 ---
 
@@ -55,34 +51,22 @@
 
 ### option 1: hacs (recommended)
 
-1. add this repo to HACS custom repositories:
-   ```
-   https://github.com/sudoxnym/sleepd
-   ```
+1. add to hacs
 
-2. search for **sleepd** in HACS and install
+    [![open your hacs](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=sudoxreboot&repository=sleepd&category=integration)
 
-3. restart home assistant
+3. search for **sleepd** in HACS and install
 
-4. add integration via UI:
+4. restart home assistant
+
+5. add integration via UI:
 
    [![Add Integration](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=saas)
 
 ### option 2: manual
 
-copy `custom_components/saas` to your HA `custom_components` directory
-
-## ⚙️ configuration
-
-| option | description |
-|--------|-------------|
-| name | identifier for this user/device |
-| topic | mqtt topic to subscribe to |
-| awake duration | seconds of awake events before marking as awake |
-| sleep duration | seconds of sleep events before marking as asleep |
-| awake states | which states indicate being awake |
-| sleep states | which states indicate being asleep |
-| mobile app | companion app target for buttons (optional) |
+1. copy `custom_components/saas` to your HA `custom_components` directory
+2. restart home assistant
 
 ## 📡 mqtt setup
 
@@ -97,18 +81,77 @@ sleepd expects json messages with an `event` field:
 {"event": "rem"}
 ```
 
-### sleep as android config
+<details>
+  <summary><strong>📲 set up Notify for Mi Band 7</strong></summary>
+  <ol>
+    <li>pair **Mi Band 7** as you normally would with <a href="https://play.google.com/store/apps/details?id=com.xiaomi.wearable&hl=en_US">Mi Fitness</a></li>
+    <li>obtain auth key for Notify app using ADB</li>
+  </ol>
 
-1. open sleep as android → settings → services → automation → MQTT
+  <pre>
+adb shell
+grep -E "authKey=[a-z0-9]*," /sdcard/Android/data/com.xiaomi.wearable/files/log/XiaomiFit.device.log |
+awk -F ", " '{print $17}' | grep authKey | tail -1 | awk -F "=" '{print $2}'
+  </pre>
 
-2. connection string:
-   ```
-   tcp://user:pass@your-ha-ip:1883
-   ```
+  <p>credit: <a href="https://www.reddit.com/r/miband/comments/15j0rfq/comment/kxlyzc6/">iamfosscad</a></p>
 
-3. set topic to match your sleepd config
+  <ol start="3">
+    <li>uninstall **Mi Fitness**</li>
+    <li>download/install <a href="https://play.google.com/store/apps/details?id=com.mc.miband1&hl=en_US">Notify for Mi Band</a></li>
+    <li>follow prompts, input auth key, select Mi Fitness is not installed</li>
+    <li>enable Sleep As Android in Notify settings</li>
+  </ol>
+</details>
 
-4. enable automatic tracking
+<details>
+  <summary><strong>🔐 extracting the Zepp <code>authKey</code> on a rooted android device</strong></summary>
+  <pre>
+su
+cd /data/data/com.huami.watch.hmwatchmanager/databases/
+ls origin_db_*
+sqlite3 origin_db_1234567890 "SELECT AUTHKEY FROM DEVICE;"
+  </pre>
+
+  <ul>
+    <li>⚠️ do not unpair before extracting</li>
+    <li>use with caution – root required</li>
+    <li>modified apps are available on <a href="https://geekdoing.com">GeekDoing</a> and <a href="https://freemyband.com">FreeMyBand</a></li>
+  </ul>
+</details>
+
+<h3>🛌 <a href="https://play.google.com/store/apps/details?id=com.urbandroid.sleep&hl=en_US">sleep as android setup</a></h3>
+<ol>
+  <li>open the app and follow setup</li>
+  <li>settings wheel > services > automation > MQTT</li>
+</ol>
+
+<pre>
+(tcp/ssl)://(MQTT User):(MQTT Pass)@(HA URL):(port)
+</pre>
+
+<ul>
+  <li>topic: must match config</li>
+  <li>client id: any unique id</li>
+</ul>
+
+<ol start="4">
+  <li>enable automatic tracking</li>
+  <li>sensor: sonar or accelerometer</li>
+  <li>wearables > **Xiaomi Mi Band** > test sensor</li>
+</ol>
+
+## ⚙️ configuration
+
+| option | description |
+|--------|-------------|
+| name | identifier for this user/device |
+| topic | mqtt topic to subscribe to |
+| awake duration | seconds of awake events before marking as awake |
+| sleep duration | seconds of sleep events before marking as asleep |
+| awake states | which states indicate being awake |
+| sleep states | which states indicate being asleep |
+| mobile app | companion app target for buttons (optional) |
 
 ## ⌚ tested wearables
 
@@ -116,27 +159,12 @@ sleepd expects json messages with an `event` field:
 - garmin fenix 7x (via garmin alternative)
 - amazfit gtr3 pro
 
-<details>
-<summary>mi band 7 auth key extraction</summary>
-
-```bash
-adb shell
-grep -E "authKey=[a-z0-9]*," /sdcard/Android/data/com.xiaomi.wearable/files/log/XiaomiFit.device.log | \
-awk -F ", " '{print $17}' | grep authKey | tail -1 | awk -F "=" '{print $2}'
-```
-
-</details>
-
-## 📜 license
-
-MIT — do whatever you want with it
-
 ---
 
 <div align="center">
 
 made by [sudoxnym](https://sudoxreboot.com) ⚡
 
-*formerly known as saas*
+*formerly known as [saas -sleep as android status](https://github.com/sudoxreboot/saas/tree/main) the app is capable of working with any mqtt sleep app now*
 
 </div>
