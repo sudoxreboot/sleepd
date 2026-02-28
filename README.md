@@ -9,8 +9,6 @@
 
 ---
 
-</div>
-
 ## ✨ features
 
 - **wake status sensor** — `awake` or `asleep` based on configurable thresholds
@@ -22,8 +20,10 @@
 
 ## 📱 compatible apps
 
-- [sleep as android](https://sleep.urbandroid.org/) (primary)
-- any app that publishes sleep events via mqtt
+| app | notes |
+|-----|-------|
+| [sleep as android](https://sleep.urbandroid.org/) | primary |
+| any mqtt sleep app | publishes sleep events via mqtt |
 
 ## 📊 sensors
 
@@ -42,10 +42,16 @@
 
 *requires home assistant companion app*
 
-- alarm dismiss / snooze
-- lullaby stop
-- sleep tracking start / stop / pause / resume
-- sleep tracking start with smart alarm
+| button | description |
+|--------|-------------|
+| alarm dismiss | dismiss active alarm |
+| alarm snooze | snooze active alarm |
+| lullaby stop | stop lullaby playback |
+| sleep tracking start | begin tracking session |
+| sleep tracking stop | end tracking session |
+| sleep tracking pause | pause tracking session |
+| sleep tracking resume | resume paused session |
+| sleep tracking start with smart alarm | start with smart alarm enabled |
 
 ## 📥 installation
 
@@ -155,9 +161,11 @@ sqlite3 origin_db_1234567890 "SELECT AUTHKEY FROM DEVICE;"
 
 ## ⌚ tested wearables
 
-- xiaomi mi band 7 (via notify for mi band)
-- garmin fenix 7x (via garmin alternative)
-- amazfit gtr3 pro
+| device | method |
+|--------|--------|
+| xiaomi mi band 7 | notify for mi band |
+| garmin fenix 7x | garmin alternative |
+| amazfit gtr3 pro | native |
 
 ---
 
@@ -165,6 +173,6 @@ sqlite3 origin_db_1234567890 "SELECT AUTHKEY FROM DEVICE;"
 
 made by [sudoxnym](https://sudoxreboot.com) ⚡
 
-*formerly known as [saas -sleep as android status](https://github.com/sudoxreboot/saas/tree/main) the app is capable of working with any mqtt sleep app now*
+*formerly known as [saas - sleep as android status](https://github.com/sudoxreboot/saas/tree/main) — the app is capable of working with any mqtt sleep app now*
 
 </div>
