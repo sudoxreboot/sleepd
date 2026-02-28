@@ -61,11 +61,11 @@
 
     [![open your hacs](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=sudoxreboot&repository=sleepd&category=integration)
 
-3. search for **sleepd** in HACS and install
+2. search for **sleepd** in HACS and install
 
-4. restart home assistant
+3. restart home assistant
 
-5. add integration via UI:
+4. add integration via UI:
 
    [![Add Integration](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=saas)
 
