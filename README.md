@@ -7,6 +7,8 @@
 
 *processes sleep mqtt messages and exposes states, events, and controls to home assistant - automate your smart home based on whether you're awake or asleep.*
 
+
+<h2>IF YOU WOULD LIKE TO RECOMMEND OTHER MQTT SLEEP APPS I WILL HAPPILY INTEGRATE OPEN A ISSUE DROP ME A BEAT!</h2>
 ---
 
 ## ✨ features
